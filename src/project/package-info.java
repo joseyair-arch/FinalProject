@@ -5,9 +5,9 @@ package project;
      private String author;
      private int anio;
 
-    public book(String author,int anio) {
+    public book(String author,int anio,String code) {
 
-        
+    	super(code);
 
         this.author=author;
         this.anio=anio;
