@@ -5,9 +5,9 @@ package project;
      private String author;
      private int anio;
 
-    public book(String author,int anio,String code) {
+    public book(String author,int anio,String code,String codigo,String title) {
 
-    	super(code);
+    	super(code,title);
 
         this.author=author;
         this.anio=anio;
@@ -35,13 +35,19 @@ package project;
         this.anio=anio;
     }
     
+    @Override
+    public int diasPrestamo() {
+
+        return 7;
+        
+    }
 
     public String toString() {
 
         return getTitulo()+" - "+author;
     }
 
-	private String getTitulo() {
+	public String getTitulo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
