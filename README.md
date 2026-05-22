@@ -1,51 +1,52 @@
-# Proyecto Integrador — Biblioteca 2.0
+#Integrated Project — Library 2.0
 
-## Descripción:
-Este proyecto consiste en una aplicación hecha en Java con ventanas, donde se simula el funcionamiento básico de una biblioteca.  
-El usuario puede registrar libros, registrar usuarios y realizar préstamos y devoluciones.
+## Description: This project consists of a Java application with windows that simulates the basic operation of a library.
 
-El objetivo es aplicar lo aprendido en clase, como el uso de clases, objetos y organización del código, además de trabajar en equipo.
+The user can register books, register users, and manage loans and returns.
 
+The objective is to apply what has been learned in class, such as the use of classes, objects, and code organization, as well as to work as a team.
 
-## Integrantes:
-- Josè Yair Hernandez Valenzuela
-- Emerson Javier Jimenez Juarez
-- Joselyn Marleni Lòpez y Lòpez
+## Team Members:
+- José Yair Hernández Valenzuela See More
+- Emerson Javier Jiménez Juárez See More
+- Joselyn Marleni López y López
 
-## Opción del proyecto:
-Opción B — Biblioteca 2.0  
+## Project Option:
+Option B — Library 2.0
 
+## Requirements:
+- Java installed
+- Eclipse or a similar program to run the project
 
-## Requisitos:
-- Tener Java instalado 
-- Tener Eclipse u otro programa similar para ejecutar el proyecto  
+## How to clone the repository:
 
+1. Open the terminal or CMD
+2. Type the following command:
 
-## Cómo clonar el repositorio:
+clone git https://github.com/joseyair-arch/FinalProject.git
 
-1. Abrir la terminal o CMD  
-2. Escribir el siguiente comando:
+3. Then enter the project folder:
 
-git clone https://github.com/joseyair-arch/FinalProject.git
+cd Final Project
 
-3. Luego entrar a la carpeta del proyecto:
+## How to run the project:
 
-cd FinalProject  
+### From Eclipse
 
-## Cómo ejecutar el proyecto:
+1. Open Eclipse
 
-### Desde Eclipse
+2. Go to File → Import
 
-1. Abrir Eclipse  
-2. Ir a File → Import  
-3. Seleccionar: Existing Projects into Workspace  
-4. Buscar la carpeta del proyecto  
-5. Abrirlo  
-6. Buscar el archivo principal (Main.java)  
-7. Click derecho → Run As → Java Application  
+3. Select: Existing Projects in Workspace
 
-## Decisión de diseño
+4. Find the project folder
 
+5. Open it
 
-## Estado del proyecto
-En desarrollo
+6. Find the main file (Main.java)
+7. Click on Right-click → Run as → Java Application
+
+## Design Decision:
+
+## Project Status:
+In Development
