@@ -5,7 +5,7 @@ package project;
      private String author;
      private int anio;
 
-    public book(String author,int anio,String code,String codigo,String title) {
+    public book(String author,int anio,String code,String title) {
 
     	super(code,title);
 

@@ -6,11 +6,13 @@ public abstract class Material {
 
 private String code;
 private String title;
+private boolean available;
 
 
 public Material(String code,String title) {
     this.code = code;
     this.title = title;
+    this.available = true;
     
   }
 public String getCode() {
@@ -37,6 +39,14 @@ public void setTitle(String title) {
     }
 
     this.title = title;
+}
+
+public boolean isDisponible() {
+    return available;
+}
+
+public void setAvailable(boolean available) {
+    this.available = available;
 }
 public int diasPrestamo() {
 	// TODO Auto-generated method stub
