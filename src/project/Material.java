@@ -41,16 +41,18 @@ public void setTitle(String title) {
     this.title = title;
 }
 
-public boolean isDisponible() {
+public boolean isAvailable() {
     return available;
 }
 
 public void setAvailable(boolean available) {
     this.available = available;
 }
-public int diasPrestamo() {
+public abstract int loanDays(); {
 	// TODO Auto-generated method stub
-	return 0;
+	
+	
+	
 }
 
  }

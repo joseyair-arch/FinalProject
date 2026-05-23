@@ -25,7 +25,7 @@ public class student extends user {
 	    }
 
 		@Override
-		public int limitePrestamos() {
+		public int loanlimit() {
 			// TODO Auto-generated method stub
 			return 0;
 		}

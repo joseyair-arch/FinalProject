@@ -35,12 +35,7 @@ package project;
         this.anio=anio;
     }
     
-    @Override
-    public int diasPrestamo() {
-
-        return 7;
-        
-    }
+   
 
     public String toString() {
 
@@ -50,6 +45,12 @@ package project;
 	public String getTitulo() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int loanDays() {
+		// TODO Auto-generated method stub
+		return 7;
 	}
 
 }

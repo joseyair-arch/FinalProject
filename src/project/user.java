@@ -27,7 +27,7 @@ public abstract class user {
         this.name = name;
     }
 
-    public abstract int limitePrestamos();
+    public abstract int loanlimit();
 
 	public int loanLimit() {
 		// TODO Auto-generated method stub
