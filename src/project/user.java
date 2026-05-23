@@ -2,21 +2,21 @@ package project;
 
 public abstract class user {
 	
-	private String license;
+	private String id;
     private String name;
 
-    public void User(String license,String name) {
+    public  user(String id,String name) {
 
-        this.license=license;
+        this.id=id;
         this.name=name;
     }
 
-    public String getLicense() {
-        return license;
+    public String getId() {
+        return id;
     }
 
-    public void setLicense(String license) {
-        this.license = license;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -28,6 +28,11 @@ public abstract class user {
     }
 
     public abstract int limitePrestamos();
+
+	public int loanLimit() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
 
