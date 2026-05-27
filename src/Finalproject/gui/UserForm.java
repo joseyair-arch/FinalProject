@@ -4,7 +4,6 @@ import project.Student;
 import project.Teacher;
 import project.User;
 import service.Library;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,96 +12,57 @@ public class UserForm extends JFrame {
     public UserForm(Library library) {
 
         setTitle("Registrar Usuario");
-
-        setSize(300,300);
-
+        setSize(350, 300);
         setLocationRelativeTo(null);
+        getContentPane().setBackground(MainMenu.BG);
+        setLayout(new BorderLayout(10, 10));
 
-        setLayout(new GridLayout(4,2));
+        JLabel titulo = new JLabel("Registrar Usuario", SwingConstants.CENTER);
+        titulo.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        titulo.setForeground(MainMenu.TEXT);
+        titulo.setBorder(BorderFactory.createEmptyBorder(15, 0, 5, 0));
+        add(titulo, BorderLayout.NORTH);
 
-        JLabel lblId =
-                new JLabel("ID:");
+        JPanel form = new JPanel(new GridLayout(3, 2, 10, 10));
+        form.setBackground(MainMenu.BG);
+        form.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 30));
 
-        JTextField txtId =
-                new JTextField();
+        JTextField txtId   = BookForm.crearCampo();
+        JTextField txtName = BookForm.crearCampo();
 
-        JLabel lblName =
-                new JLabel("Nombre:");
+        JComboBox<String> cmbType = new JComboBox<>(new String[]{"Estudiante", "Docente"});
+        cmbType.setBackground(new Color(70, 50, 110));
+        cmbType.setForeground(MainMenu.TEXT);
+        cmbType.setFont(MainMenu.FONT);
 
-        JTextField txtName =
-                new JTextField();
+        form.add(BookForm.crearLabel("ID:"));      form.add(txtId);
+        form.add(BookForm.crearLabel("Nombre:"));  form.add(txtName);
+        form.add(BookForm.crearLabel("Tipo:"));    form.add(cmbType);
 
-        JLabel lblType =
-                new JLabel("Tipo:");
+        add(form, BorderLayout.CENTER);
 
-        String[] types = {
-                "Student",
-                "Teacher"
-        };
-
-        JComboBox<String> cmbType =
-                new JComboBox<>(types);
-
-        JButton btnSave =
-                new JButton("Guardar");
-
-        add(lblId);
-        add(txtId);
-
-        add(lblName);
-        add(txtName);
-
-        add(lblType);
-        add(cmbType);
-
-        add(btnSave);
+        JButton btnSave = MainMenu.crearBoton("Guardar");
+        JPanel bottom = new JPanel(new GridLayout(1,1));
+        bottom.setBackground(MainMenu.BG);
+        bottom.setBorder(BorderFactory.createEmptyBorder(0, 30, 20, 30));
+        bottom.add(btnSave);
+        add(bottom, BorderLayout.SOUTH);
 
         btnSave.addActionListener(e -> {
+            String id   = txtId.getText();
+            String name = txtName.getText();
+            String type = cmbType.getSelectedItem().toString();
 
-            String id =
-                    txtId.getText();
+            User user = type.equals("Student") ? new Student(id, name) : new Teacher(id, name);
+            boolean added = library.addUser(user);
 
-            String name =
-                    txtName.getText();
-
-            String type =
-                    cmbType.getSelectedItem().toString();
-
-            User user;
-
-            if(type.equals("Student")) {
-
-                user = new Student(id, name);
-
+            if (added) {
+                JOptionPane.showMessageDialog(null, "Usuario registrado");
             } else {
-
-                user = new Teacher(id, name);
-
+                JOptionPane.showMessageDialog(null, "ID repetido");
             }
-
-            boolean added =
-                    library.addUser(user);
-
-            if(added){
-
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Usuario registrado"
-                );
-
-            } else {
-
-                JOptionPane.showMessageDialog(
-                        null,
-                        "ID repetido"
-                );
-
-            }
-
         });
 
         setVisible(true);
-
     }
-
 }
