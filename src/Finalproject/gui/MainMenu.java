@@ -56,12 +56,48 @@ public class MainMenu extends JFrame {
 
         add(panel);
 
+        // EXIT
         btnExit.addActionListener(e -> System.exit(0));
 
         // OPEN BOOK FORM
         btnBook.addActionListener(e -> {
 
             new BookForm(library);
+
+        });
+
+        // OPEN USER FORM
+        btnUser.addActionListener(e -> {
+
+            new UserForm(library);
+
+        });
+
+        // OPEN LOAN FORM
+        btnLoan.addActionListener(e -> {
+
+            new LoanForm(library);
+
+        });
+
+        // OPEN RETURN FORM
+        btnReturn.addActionListener(e -> {
+
+            new ReturnForm(library);
+
+        });
+
+        // OPEN CATALOG
+        btnCatalog.addActionListener(e -> {
+
+            new CatalogForm(library);
+
+        });
+
+        // OPEN LOANS WINDOW
+        btnLoans.addActionListener(e -> {
+
+            new LoansForm(library);
 
         });
 

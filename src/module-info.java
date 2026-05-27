@@ -1,9 +1,3 @@
-/**
- * 
- */
-/**
- * 
- */
 module Finalproject {
-	requires java.desktop;
+    requires java.desktop;
 }

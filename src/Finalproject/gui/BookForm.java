@@ -2,7 +2,6 @@ package Finalproject.gui;
 
 import project.Book;
 import service.Library;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,112 +10,53 @@ public class BookForm extends JFrame {
     public BookForm(Library library) {
 
         setTitle("Registrar Libro");
-
         setSize(300, 300);
-
         setLocationRelativeTo(null);
+        setLayout(new GridLayout(5, 2));
 
-        setLayout(new GridLayout(5,2));
+        JLabel lblCode = new JLabel("Código:");
+        JTextField txtCode = new JTextField();
 
-        JLabel lblCode =
-                new JLabel("Código:");
+        JLabel lblTitle = new JLabel("Título:");
+        JTextField txtTitle = new JTextField();
 
-        JTextField txtCode =
-                new JTextField();
+        JLabel lblAuthor = new JLabel("Autor:");
+        JTextField txtAuthor = new JTextField();
 
-        JLabel lblTitle =
-                new JLabel("Título:");
+        JLabel lblYear = new JLabel("Año:");
+        JTextField txtYear = new JTextField();
 
-        JTextField txtTitle =
-                new JTextField();
+        JButton btnSave = new JButton("Guardar");
 
-        JLabel lblAuthor =
-                new JLabel("Autor:");
-
-        JTextField txtAuthor =
-                new JTextField();
-
-        JLabel lblYear =
-                new JLabel("Año:");
-
-        JTextField txtYear =
-                new JTextField();
-
-        JButton btnSave =
-                new JButton("Guardar");
-
-        add(lblCode);
-        add(txtCode);
-
-        add(lblTitle);
-        add(txtTitle);
-
-        add(lblAuthor);
-        add(txtAuthor);
-
-        add(lblYear);
-        add(txtYear);
-
+        add(lblCode);   add(txtCode);
+        add(lblTitle);  add(txtTitle);
+        add(lblAuthor); add(txtAuthor);
+        add(lblYear);   add(txtYear);
         add(btnSave);
 
         btnSave.addActionListener(e -> {
-
             try {
+                String code   = txtCode.getText();
+                String title  = txtTitle.getText();
+                String author = txtAuthor.getText();
+                int year      = Integer.parseInt(txtYear.getText());
 
-                String code =
-                        txtCode.getText();
+                // orden correcto: code, title, author, year
+                Book book = new Book(code, title, author, year);
 
-                String title =
-                        txtTitle.getText();
+                boolean added = library.addMaterial(book);
 
-                String author =
-                        txtAuthor.getText();
-
-                int year =
-                        Integer.parseInt(
-                                txtYear.getText()
-                        );
-
-                Book book =
-                        new Book(
-                                code,
-                                title,
-                                author,
-                                year
-                        );
-
-                boolean added =
-                        library.addMaterial(book);
-
-                if(added){
-
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "Libro registrado"
-                    );
-
+                if (added) {
+                    JOptionPane.showMessageDialog(null, "Libro registrado");
                 } else {
-
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "Código repetido"
-                    );
-
+                    JOptionPane.showMessageDialog(null, "Código repetido");
                 }
 
-            } catch(Exception ex){
-
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Error"
-                );
-
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error: verifica los datos");
             }
-
         });
 
         setVisible(true);
-
     }
-
 }
