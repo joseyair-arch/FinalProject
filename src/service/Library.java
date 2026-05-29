@@ -7,33 +7,30 @@ import java.util.ArrayList;
 public class Library {
 
     private ArrayList<Material> materials;
-    private ArrayList<user> users;
+
+    private ArrayList<User> users;
+
     private ArrayList<Loan> loans;
 
-    public Library(){
+    public Library() {
 
         materials = new ArrayList<>();
+
         users = new ArrayList<>();
+
         loans = new ArrayList<>();
 
     }
 
-
     // ADD MATERIAL
-    public boolean addMaterial(
-            Material material
-    ){
+    public boolean addMaterial(Material material) {
 
-        for(Material m : materials){
+        for (Material m : materials) {
 
-            if(
-                    m.getCode()
-                    .equalsIgnoreCase(
-                            material.getCode()
-                    )
-            ){
+            if (m.getCode().equalsIgnoreCase(material.getCode())) {
 
                 return false;
+
             }
 
         }
@@ -44,22 +41,15 @@ public class Library {
 
     }
 
-
     // ADD USER
-    public boolean addUser(
-            user user
-    ){
+    public boolean addUser(User user) {
 
-        for(user u : users){
+        for (User u : users) {
 
-            if(
-                    u.getId()
-                    .equalsIgnoreCase(
-                            user.getId()
-                    )
-            ){
+            if (u.getId().equalsIgnoreCase(user.getId())) {
 
                 return false;
+
             }
 
         }
@@ -70,23 +60,12 @@ public class Library {
 
     }
 
-
-
     // SEARCH MATERIAL
-    public Material searchMaterial(
-            String code
-    ){
+    public Material searchMaterial(String code) {
 
-        for(
-                Material m:materials
-        ){
+        for (Material m : materials) {
 
-            if(
-                    m.getCode()
-                    .equalsIgnoreCase(
-                            code
-                    )
-            ){
+            if (m.getCode().equalsIgnoreCase(code)) {
 
                 return m;
 
@@ -98,22 +77,12 @@ public class Library {
 
     }
 
-
     // SEARCH USER
-    public user searchUser(
-            String id
-    ){
+    public User searchUser(String id) {
 
-        for(
-                user u:users
-        ){
+        for (User u : users) {
 
-            if(
-                    u.getId()
-                    .equalsIgnoreCase(
-                            id
-                    )
-            ){
+            if (u.getId().equalsIgnoreCase(id)) {
 
                 return u;
 
@@ -125,59 +94,30 @@ public class Library {
 
     }
 
+    // MAKE LOAN
+    public boolean makeLoan(String userId, String materialCode) {
 
+        User user = searchUser(userId);
 
-    // LOAN
-    public String loanMaterial(
-            String id,
-            String code
-    ){
+        Material material = searchMaterial(materialCode);
 
-        user user =
-                searchUser(id);
+        if (user == null || material == null) {
 
-        if(user==null){
-
-            return "User not found";
+            return false;
 
         }
 
+        if (!material.isAvailable()) {
 
-        Material material=
-                searchMaterial(
-                        code
-                );
-
-        if(material==null){
-
-            return "Material not found";
+            return false;
 
         }
 
+        int count = 0;
 
-        if(
-                !material.isAvailable()
-        ){
+        for (Loan l : loans) {
 
-            return "Not available";
-
-        }
-
-
-
-        int count=0;
-
-        for(
-                Loan l:loans
-        ){
-
-            if(
-                    l.getUser()
-                    .getId()
-                    .equals(
-                            id
-                    )
-            ){
+            if (l.getUser().getId().equalsIgnoreCase(userId)) {
 
                 count++;
 
@@ -185,111 +125,55 @@ public class Library {
 
         }
 
+        if (count >= user.loanLimit()) {
 
-
-        if(
-                count>=
-                user.loanLimit()
-        ){
-
-            return "Loan limit exceeded";
+            return false;
 
         }
 
+        material.setAvailable(false);
 
+        Loan loan = new Loan(user, material);
 
-        material.setAvailable(
-                false
-        );
+        loans.add(loan);
 
-
-        loans.add(
-                new Loan(
-                        user,
-                        material
-                )
-        );
-
-
-        return "Loan completed";
+        return true;
 
     }
 
+    // RETURN MATERIAL
+    public boolean returnMaterial(String code) {
 
+        for (Loan l : loans) {
 
-    // RETURN
-    public String returnMaterial(
-            String code
-    ){
+            if (l.getMaterial().getCode().equalsIgnoreCase(code)) {
 
-        Loan remove=null;
+                l.getMaterial().setAvailable(true);
 
+                loans.remove(l);
 
-        for(
-                Loan l:loans
-        ){
-
-            if(
-                    l.getMaterial()
-                    .getCode()
-                    .equalsIgnoreCase(
-                            code
-                    )
-            ){
-
-                remove=l;
-
-                break;
+                return true;
 
             }
 
         }
 
-
-        if(remove==null){
-
-            return "Loan not found";
-
-        }
-
-
-        remove
-        .getMaterial()
-        .setAvailable(
-                true
-        );
-
-
-        loans.remove(
-                remove
-        );
-
-        return "Returned";
+        return false;
 
     }
 
-
-    public ArrayList<Material>
-    getMaterials(){
+    // VIEW MATERIALS
+    public ArrayList<Material> getMaterials() {
 
         return materials;
 
     }
 
-
-    public ArrayList<user>
-    getUsers(){
-
-        return users;
-
-    }
-
-
-    public ArrayList<Loan>
-    getLoans(){
+    // VIEW LOANS
+    public ArrayList<Loan> getLoans() {
 
         return loans;
 
     }
-    
+
 }
