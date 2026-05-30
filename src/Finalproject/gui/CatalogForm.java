@@ -7,7 +7,12 @@ import java.awt.*;
 
 public class CatalogForm extends JFrame {
 
-    public CatalogForm(Library library) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public CatalogForm(Library library) {
 
         setTitle("Catálogo");
         setSize(420, 320);

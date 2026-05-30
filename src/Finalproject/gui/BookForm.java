@@ -3,11 +3,19 @@ package Finalproject.gui;
 import project.Book;
 import service.Library;
 import javax.swing.*;
+
+import persistence.Persistence;
+
 import java.awt.*;
 
 public class BookForm extends JFrame {
 
-    public BookForm(Library library) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public BookForm(Library library) {
 
         setTitle("Registrar Libro");
         setSize(350, 320);
@@ -54,8 +62,11 @@ public class BookForm extends JFrame {
 
                 Book book = new Book(code, title, author, year);
                 boolean added = library.addMaterial(book);
+                System.out.println("Books in library: " +
+                        library.getMaterials().size());
 
                 if (added) {
+                	Persistence.saveData(library);
                     JOptionPane.showMessageDialog(null, "Libro registrado");
                 } else {
                     JOptionPane.showMessageDialog(null, "Código repetido");

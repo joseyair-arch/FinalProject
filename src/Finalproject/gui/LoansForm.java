@@ -7,7 +7,12 @@ import java.awt.*;
 
 public class LoansForm extends JFrame {
 
-    public LoansForm(Library library) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public LoansForm(Library library) {
 
         setTitle("Préstamos");
         setSize(420, 320);

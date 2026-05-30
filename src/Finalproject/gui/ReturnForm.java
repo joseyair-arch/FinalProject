@@ -6,7 +6,12 @@ import java.awt.*;
 
 public class ReturnForm extends JFrame {
 
-    public ReturnForm(Library library) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ReturnForm(Library library) {
 
         setTitle("Devolver Material");
         setSize(350, 210);

@@ -9,7 +9,12 @@ import java.awt.*;
 
 public class UserForm extends JFrame {
 
-    public UserForm(Library library) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UserForm(Library library) {
 
         setTitle("Registrar Usuario");
         setSize(350, 300);

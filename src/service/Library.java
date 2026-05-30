@@ -4,7 +4,9 @@ import project.*;
 
 import java.util.ArrayList;
 
+
 public class Library {
+	
 
     private ArrayList<Material> materials;
 
@@ -176,4 +178,12 @@ public class Library {
 
     }
 
-}
+    public ArrayList<User> getUsers() {
+
+        return users;
+
+    }
+	}
+	
+
+

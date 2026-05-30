@@ -4,9 +4,18 @@ import service.Library;
 import javax.swing.*;
 import java.awt.*;
 
+import persistence.Persistence;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 public class MainMenu extends JFrame {
 
-    private Library library;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Library library;
 
     // COLORES MORADOS
     static final Color BG = new Color(30, 20, 50);
@@ -18,7 +27,9 @@ public class MainMenu extends JFrame {
 
     public MainMenu() {
 
-        library = new Library();
+    	library = new Library();
+
+    	Persistence.loadData(library);
 
         setTitle("Biblioteca 2.0");
         setSize(400, 520);
@@ -26,6 +37,19 @@ public class MainMenu extends JFrame {
         setLocationRelativeTo(null);
         getContentPane().setBackground(BG);
         setLayout(new BorderLayout(10, 10));
+        addWindowListener(new WindowAdapter() {
+
+        	@Override
+        	public void windowClosing(WindowEvent e) {
+
+        	    System.out.println("MainMenu Library: " + library);
+
+        	    System.out.println("Books: " +
+        	            library.getMaterials().size());
+
+        	    Persistence.saveData(library);
+        	}
+        });
 
         // TÍTULO
         JLabel titulo = new JLabel(" Biblioteca 2.0", SwingConstants.CENTER);
